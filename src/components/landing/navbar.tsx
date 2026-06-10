@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Github, LayoutGrid } from "lucide-react";
+import { Github } from "lucide-react";
+import { LogoIcon } from "@/components/brand/logo-icon";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 
@@ -17,7 +18,7 @@ export function Navbar() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
-            <LayoutGrid className="h-4 w-4" />
+            <LogoIcon />
           </span>
           {SITE.name}
         </Link>
