@@ -2,9 +2,8 @@
 
 import {
   BarChart3,
-  FileText,
   Gauge,
-  Layout,
+  LayoutGrid,
   Palette,
   PenTool,
   Search,
@@ -12,87 +11,91 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { MotionItem, MotionSection } from "@/components/landing/motion";
+import { Reveal, RevealGroup } from "@/components/landing/reveal";
 
 const features = [
   {
-    icon: Layout,
-    title: "Theme engine",
-    description: "Folder-based themes with layout, landing, single, and page routes. Drop in custom themes — auto-discovered via theme.json.",
+    icon: LayoutGrid,
+    title: "Theme Engine",
+    description:
+      "Folder-based themes with layout, landing, single, and page routes. Drop a folder in, Catalyst finds it.",
   },
   {
     icon: PenTool,
-    title: "Integrated content admin",
-    description: "Manage posts and pages inside Catalyst — visual editor, drag-and-drop sections, Gutenberg blocks, per-page SEO, and auto-save.",
+    title: "Content Admin",
+    description:
+      "Edit posts and pages inside Catalyst. Visual editor, sections, blocks, per-page SEO, auto-save.",
   },
   {
     icon: Search,
-    title: "SEO & discovery",
-    description: "Meta tags, Open Graph, canonical URLs, sitemap.xml, robots.txt, and llms.txt — built in, no extra plugins.",
+    title: "SEO and Discovery",
+    description: "Meta tags, Open Graph, sitemap.xml, robots.txt, and llms.txt. Built in.",
   },
   {
     icon: BarChart3,
-    title: "GA4 & Search Console",
-    description: "Paste your Measurement ID and verification code. Catalyst handles tracking tags and sitemap submission URLs.",
+    title: "Analytics",
+    description: "Paste your GA4 and Search Console codes. We inject the tags.",
   },
   {
     icon: Gauge,
     title: "Performance",
-    description: "Optional CSS/JS minify, WebP generation, post query caching, DNS prefetch, and font preconnect hints.",
+    description: "Optional minify, WebP images, query caching, and sensible resource hints.",
   },
   {
     icon: Shield,
-    title: "Security headers",
-    description: "Configurable referrer policy, X-Frame-Options, nosniff, and optional generator tag hiding.",
+    title: "Security",
+    description: "Security headers, referrer policy, and optional generator tag hiding.",
   },
   {
     icon: Palette,
-    title: "Built-in themes",
-    description: "Mono, Null, and Grain ship out of the box — distinct personalities, not color swaps.",
+    title: "Base Themes",
+    description: "Mono, Null, and Grain ship free. Real layouts, not palette swaps.",
   },
   {
     icon: Sparkles,
-    title: "Theme marketplace",
-    description: "Premium theme browsing and one-click install — coming soon.",
+    title: "Marketplace",
+    description: "Premium themes from WP admin. Coming soon, but the tab is already there.",
   },
   {
     icon: Zap,
-    title: "GitHub updates",
-    description: "Auto-update from GitHub releases when you tag versions that match CATALYST_VERSION.",
-  },
-  {
-    icon: FileText,
-    title: "Universal 404",
-    description: "Light, readable 404 page handled at the plugin level — consistent across all themes.",
+    title: "GitHub Updates",
+    description: "Tag a release, update in one click from the Plugins screen.",
   },
 ];
 
 export function Features() {
   return (
-    <MotionSection id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-      <MotionItem className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Everything you need</h2>
-        <p className="mt-3 text-muted-foreground">
-          Catalyst replaces WordPress frontend rendering while keeping the CMS you already know.
-        </p>
-      </MotionItem>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map((f) => (
-          <MotionItem key={f.title}>
-            <Card className="h-full transition-shadow hover:shadow-md">
-              <CardHeader>
-                <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <f.icon className="h-4 w-4" />
-                </div>
-                <CardTitle className="text-base">{f.title}</CardTitle>
-                <CardDescription>{f.description}</CardDescription>
-              </CardHeader>
-              <CardContent />
-            </Card>
-          </MotionItem>
-        ))}
+    <section id="features" className="px-4 py-20 sm:px-6 sm:py-28">
+      <div className="mx-auto max-w-content">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-medium text-primary">What You Get</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Lean Frontend, Full WordPress Underneath
+          </h2>
+          <p className="mt-3 text-lg text-muted-foreground">
+            Let's be real for a sec: most WordPress sites don't need another page builder. They need
+            less junk between the content and the visitor.
+          </p>
+        </Reveal>
+
+        <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <article
+              key={f.title}
+              data-reveal-item
+              className="rounded-2xl border bg-card p-5 transition-shadow hover:shadow-sm"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <f.icon className="h-4 w-4" />
+              </span>
+              <h3 className="mt-3 text-base font-semibold">{f.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                {f.description}
+              </p>
+            </article>
+          ))}
+        </RevealGroup>
       </div>
-    </MotionSection>
+    </section>
   );
 }

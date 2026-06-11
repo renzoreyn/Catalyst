@@ -1,8 +1,8 @@
 # Catalyst
 
-**WordPress backend. Your frontend.**
+**Unbloat your WP, buddy.**
 
-Catalyst is a WordPress plugin that replaces frontend rendering with an internal theme system. WordPress stays your CMS — database, REST API, users, and media library all remain intact. Catalyst intercepts public requests and renders them through folder-based PHP themes with a modern admin panel for settings, content, SEO, and analytics.
+Catalyst is a WordPress plugin that runs your frontend through folder-based PHP themes. WordPress stays your CMS. Database, REST API, users, and media all stay intact. You get a modern admin panel for settings, content, SEO, and analytics without the usual plugin pile-up.
 
 - **Author:** [@renzoreyn](https://github.com/renzoreyn)
 - **Requires:** WordPress 6.0+, PHP 7.4+
@@ -14,7 +14,7 @@ Catalyst is a WordPress plugin that replaces frontend rendering with an internal
 
 ### Theme engine
 - Folder-based themes with `layout.php`, `landing.php`, `single.php`, and `page.php`
-- Built-in themes: **Mono**, **Null**, **Grain**
+- Built-in themes: **Mono**, **Null**, **Grain**, plus **Cupertino** (premium marketing landing)
 - Auto-discovery of new theme folders + `theme.json` metadata
 - Optional per-page overrides at `themes/{theme}/pages/{slug}.php`
 - Universal light 404 page (plugin-level)
@@ -34,8 +34,8 @@ Catalyst is a WordPress plugin that replaces frontend rendering with an internal
 - `<link rel="sitemap">` and optimized robots meta tags
 
 ### Analytics
-- **Google Analytics 4** — paste Measurement ID, gtag injected on frontend
-- **Google Search Console** — verification meta tag + sitemap URL for submission
+- **Google Analytics 4**: paste Measurement ID, gtag injected on frontend
+- **Google Search Console**: verification meta tag and sitemap URL for submission
 
 ### Performance
 - Optional CSS/JS minification (cached in uploads)
@@ -65,10 +65,36 @@ Catalyst is a WordPress plugin that replaces frontend rendering with an internal
 3. **Activate** the plugin.
 
 4. Open **Catalyst** in wp-admin:
-   - **Theme** — pick an active theme
-   - **SEO & OG** — site-wide meta
-   - **Content** — posts/pages settings + integrated editor
-   - **Performance** / **Security** / **Analytics** — as needed
+   - **Theme**: pick an active theme
+   - **SEO & OG**: site-wide meta
+   - **Content**: posts/pages settings and integrated editor
+   - **Performance** / **Security** / **Analytics**: as needed
+
+### Auto-updates (GitHub Releases)
+
+Yes. Catalyst checks **GitHub Releases** on `renzoreyn/catalyst` and shows one-click updates in **Plugins → Catalyst** when a newer version exists.
+
+**To publish an update:**
+
+1. Bump `CATALYST_VERSION` in `catalyst.php` (e.g. `0.7.4`).
+2. Create a git tag that matches: `v0.7.4` (the `v` prefix is stripped automatically).
+3. Build a zip where the plugin lives at **`catalyst/catalyst.php`** inside the archive:
+
+   ```
+   catalyst.zip
+   └── catalyst/
+       ├── catalyst.php
+       ├── includes/
+       └── themes/
+   ```
+
+4. On GitHub → **Releases** → **Draft a new release** → choose the tag → attach `catalyst.zip` as a release asset → publish.
+
+WordPress compares the installed version to the latest release tag. If yours is lower, **Dashboard → Updates** (or the Plugins screen) offers **Update now**.
+
+> Do **not** rely on GitHub’s auto-generated “Source code” zip — the folder layout is wrong. Always attach a hand-built `catalyst.zip`.
+
+To point at a fork, change `GITHUB_REPO` in `includes/class-updater.php`.
 
 ### Development
 
@@ -119,7 +145,7 @@ themes/my-theme/
     └── script.js
 ```
 
-Drop the folder in `themes/` — Catalyst detects it on the next admin load. Incomplete themes appear as **Incomplete** with missing-file hints until all required templates exist.
+Drop the folder in `themes/`. Catalyst detects it on the next admin load. Incomplete themes show as **Incomplete** with missing-file hints until all required templates exist.
 
 ### Runtime data
 

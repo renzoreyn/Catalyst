@@ -1,10 +1,13 @@
 export const SITE = {
   name: "Catalyst",
-  tagline: "WordPress backend. Your frontend.",
+  motto: "Unbloat your WP, buddy.",
+  tagline: "Unbloat your WP, buddy.",
   description:
-    "A WordPress plugin that replaces frontend rendering with an internal theme system — fast, SEO-ready, and fully under your control.",
+    "A WordPress plugin that runs your frontend through folder-based themes. Keep the CMS. Lose the plugin pile-up.",
   github: "https://github.com/renzoreyn/catalyst",
   releases: "https://github.com/renzoreyn/catalyst/releases",
+  issues: "https://github.com/renzoreyn/catalyst/issues",
+  discussions: "https://github.com/renzoreyn/catalyst/discussions",
   author: "renzoreyn",
   version: "0.7.3",
 } as const;
