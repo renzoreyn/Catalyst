@@ -9,5 +9,4 @@ export const SITE = {
   issues: "https://github.com/renzoreyn/catalyst/issues",
   discussions: "https://github.com/renzoreyn/catalyst/discussions",
   author: "renzoreyn",
-  version: "0.7.3",
 } as const;
